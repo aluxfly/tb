@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Tender, Qualification } from "./types";
 import { getQualifications } from "./lib/qualifications";
 import { sortByMatch, MatchResult } from "./lib/match";
+import { BidGenerator } from "./lib/bid-generator";
 
 export default function Home() {
   const [tenders, setTenders] = useState<Tender[]>([]);
@@ -39,6 +40,32 @@ export default function Home() {
     if (score >= 80) return "高匹配";
     if (score >= 60) return "中匹配";
     return "低匹配";
+  };
+
+  // 生成标书（针对某个招标）
+  const generateBidDocument = async (tender: Tender) => {
+    if (qualifications.length === 0) {
+      alert("请先录入企业资质信息（点击右上角「管理资质」）");
+      return;
+    }
+
+    try {
+      const generator = new BidGenerator(tender, qualifications);
+      const blob = await generator.generateDocx("/bid-templates/tech-bid-template.docx");
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      const companyName = qualifications[0]?.name || "未命名企业";
+      link.download = `标书_${tender.id}_${companyName}.docx`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("标书生成失败:", error);
+      alert("标书生成失败，请检查控制台日志");
+    }
   };
 
   return (
@@ -180,10 +207,19 @@ export default function Home() {
                     <p className="text-xs text-gray-500 mb-1">投标截止</p>
                     <p className="text-sm font-semibold text-gray-900">{tender.deadline}</p>
                   </div>
-                  <div className="mt-1">
+                  <div className="mt-1 space-y-1">
                     <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-indigo-100 text-indigo-700 rounded">
                       查看详情 →
                     </span>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault(); // 阻止链接跳转
+                        generateBidDocument(tender);
+                      }}
+                      className="w-full inline-flex items-center justify-center px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded hover:bg-green-200 transition-colors"
+                    >
+                      📥 生成标书
+                    </button>
                   </div>
                 </div>
               </div>
