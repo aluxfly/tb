@@ -32,7 +32,78 @@ export default function TenderDetailPage({ params }: PageProps) {
       });
   }, [tenderId]);
 
-  // ... 剩余代码
+  // 生成标书（DOCX下载）
+  const generateBidDocument = async () => {
+    if (!tender || qualifications.length === 0) {
+      alert("请先完善企业资质信息");
+      return;
+    }
+
+    try {
+      // 动态加载 docxtemplater 库（避免 SSR 问题）
+      const { default: Docxtemplater } = await import("docxtemplater");
+      const { pizZip } = await import("pizzip");
+
+      // 加载模板
+      const response = await fetch("/bid-templates/tech-bid-template.docx");
+      const arrayBuffer = await response.arrayBuffer();
+      const zip = new pizZip(arrayBuffer);
+      const doc = new Docxtemplater();
+      doc.loadZip(zip);
+
+      // 准备数据
+      const companyName = qualifications[0]?.name || "未命名企业";
+      const qualificationNames = qualifications.map(q => q.name).join("、");
+      const currentDate = new Date().toLocaleDateString("zh-CN");
+
+      // 填充模板变量（根据模板实际变量名调整）
+      const data = {
+        tender: {
+          title: tender.title,
+          id: tender.id,
+          budget: tender.budget,
+          deadline: tender.deadline,
+          region: tender.region,
+          industry: tender.industry,
+          description: tender.description || "无",
+          requiredQualifications: tender.requiredQualifications.join("；") || "无",
+        },
+        company: {
+          name: companyName,
+          qualifications: qualificationNames,
+          matchScore: matchResult?.matchScore || 0,
+        },
+        meta: {
+          generatedDate: currentDate,
+          generator: "智标通 MVP",
+        },
+      };
+
+      doc.setData(data);
+      doc.render();
+
+      // 生成 DOCX 文件
+      const updatedZip = doc.getZip();
+      const blob = updatedZip.generate({
+        type: "blob",
+        mimeType:
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document; charset=utf-8",
+      });
+
+      // 触发下载
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `标书_${tender.id}_${companyName}.docx`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("标书生成失败:", error);
+      alert("标书生成失败，请检查控制台日志");
+    }
+  };
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return "text-green-600 bg-green-100";
@@ -222,7 +293,16 @@ export default function TenderDetailPage({ params }: PageProps) {
               补充资质以提高匹配
             </a>
           )}
+          <button
+            onClick={generateBidDocument}
+            className="px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm flex items-center gap-2"
+          >
+            <span>📥</span> 生成标书
+          </button>
         </div>
+
+        {/* 隐藏的模板加载（用于标书生成） */}
+        <div id="bid-template-container" style={{ display: "none" }}></div>
       </main>
 
       <footer className="max-w-4xl mx-auto px-4 py-6 text-center text-xs text-gray-400">
