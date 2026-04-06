@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能投标匹配系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .page { display: none; }
+    .page.active { display: block; }
+    .card { cursor: pointer; transition: all 0.2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .badge { padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+    .badge-high { background: #dcfce7; color: #16a34a; }
+    .badge-med { background: #fef3c7; color: #d97706; }
+    .badge-low { background: #fee2e2; color: #dc2626; }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <!-- 导航栏 -->
+  <nav class="bg-blue-600 text-white p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">🤖 智能投标匹配系统</h1>
+      <div class="space-x-4">
+        <button id="nav-list" class="px-4 py-2 rounded bg-blue-500 hover:bg-blue-400">标讯列表</button>
+        <button id="nav-qualification" class="px-4 py-2 rounded hover:bg-blue-500">我的资质</button>
+        <button id="nav-update" class="px-4 py-2 rounded hover:bg-blue-500">🔄 更新数据</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 页面1：标讯列表 -->
+  <div id="page-list" class="page active container mx-auto p-6">
+    <div class="bg-white rounded-lg shadow p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold">招标公告列表</h2>
+        <div class="flex gap-2">
+          <input id="search-input" type="text" placeholder="搜索关键词..." class="border rounded px-3 py-2 w-64">
+          <select id="region-filter" class="border rounded px-3 py-2">
+            <option value="">全部地区</option>
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="山东">山东</option>
+            <option value="黑龙江">黑龙江</option>
+            <option value="辽宁">辽宁</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="tender-count" class="mb-4 text-gray-600"></div>
+
+      <div class="grid gap-4" id="tender-list">
+        <!-- 动态加载 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 页面2：我的资质 -->
+  <div id="page-qualification" class="page container mx-auto p-6">
+    <div class="bg-white rounded-lg shadow p-6 max-w-2xl">
+      <h2 class="text-2xl font-bold mb-6">我的资质管理</h2>
+      <p class="text-gray-600 mb-4">添加你的企业资质，系统将自动计算匹配度。</p>
+
+      <div class="flex gap-2 mb-6">
+        <input id="qual-input" type="text" placeholder="输入资质（如：ISO9001）" class="border rounded px-3 py-2 flex-1">
+        <button id="qual-add" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">添加</button>
+      </div>
+
+      <div id="qual-list" class="space-y-2">
+        <!-- 动态加载 -->
+      </div>
+
+      <div class="mt-6 p-4 bg-blue-50 rounded">
+        <h3 class="font-bold mb-2">匹配度说明</h3>
+        <ul class="text-sm text-gray-700 space-y-1">
+          <li>📍 地区匹配：+30分</li>
+          <li>📜 每项匹配资质：+20分</li>
+          <li>💰 预算达标（>100万）：+10分</li>
+          <li>最高100分</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 详情页模态框 -->
+  <div id="modal-detail" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-xl max-w-3xl w-full m-4 max-h-[90vh] overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 id="detail-title" class="text-2xl font-bold text-gray-800"></h3>
+          <button id="modal-close" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div><strong>项目编号：</strong><span id="detail-id"></span></div>
+          <div><strong>地区：</strong><span id="detail-region"></span></div>
+          <div><strong>预算：</strong><span id="detail-budget"></span></div>
+          <div><strong>截止日期：</strong><span id="detail-deadline"></span></div>
+          <div><strong>发布日期：</strong><span id="detail-publish"></span></div>
+          <div><strong>发布机关：</strong><span id="detail-contact"></span></div>
+        </div>
+        <div class="mt-4">
+          <strong>项目描述：</strong>
+          <p id="detail-description" class="text-gray-700 mt-1"></p>
+        </div>
+        <div class="mt-4">
+          <strong>资质要求：</strong>
+          <div id="detail-requirements" class="flex flex-wrap gap-2 mt-1"></div>
+        </div>
+        <div class="mt-6 pt-4 border-t">
+          <a id="detail-link" href="#" target="_blank" class="bg-blue-600 text-white px-6 py-2 rounded inline-block hover:bg-blue-700">
+            🔗 查看原文（ECP平台）
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 更新数据进度 -->
+  <div id="update-progress" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-xl p-8 max-w-md text-center">
+      <div class="text-2xl font-bold mb-4">🔄 正在更新数据...</div>
+      <div class="text-gray-600" id="update-status">正在抓取最新招标信息</div>
+    </div>
+  </div>
+
+  <script>
+    // === 状态管理 ===
+    let tenders = [];
+    let myQualifications = JSON.parse(localStorage.getItem('myQualifications') || '[]');
+
+    // === 路由 ===
+    document.getElementById('nav-list').addEventListener('click', () => showPage('list'));
+    document.getElementById('nav-qualification').addEventListener('click', () => showPage('qualification'));
+    document.getElementById('nav-update').addEventListener('click', updateData);
+
+    function showPage(page) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(`page-${page}`).classList.add('active');
+      if (page === 'list') renderTenderList();
+      if (page === 'qualification') renderQualifications();
+    }
+
+    // === 标讯列表 ===
+    async function loadTenders() {
+      try {
+        const resp = await fetch('tender_data.json');
+        const data = await resp.json();
+        tenders = data.items || [];
+      } catch (e) {
+        tenders = [];
+      }
+    }
+
+    function getMatchScore(tender) {
+      let score = 0;
+      // 地区匹配
+      const userRegion = myQualifications.find(q => ['北京','上海','山东','黑龙江','辽宁','广东','全国'].includes(q));
+      if (userRegion && (tender.region === userRegion || tender.title.includes(userRegion))) {
+        score += 30;
+      }
+      // 资质匹配
+      const matches = myQualifications.filter(q => tender.title.includes(q) || (tender.requirements || []).includes(q));
+      score += matches.length * 20;
+      // 预算（简单验证：预算字段包含"万"或具体数字）
+      if (tender.budget && tender.budget !== '面议') {
+        score += 10;
+      }
+      return Math.min(score, 100);
+    }
+
+    function renderTenderList() {
+      const filterVal = document.getElementById('region-filter').value;
+      const searchVal = document.getElementById('search-input').value.toLowerCase();
+
+      let filtered = tenders.filter(t => {
+        const matchRegion = !filterVal || t.region === filterVal || t.title.includes(filterVal);
+        const matchSearch = !searchVal || t.title.toLowerCase().includes(searchVal) || t.id.toLowerCase().includes(searchVal);
+        return matchRegion && matchSearch;
+      });
+
+      // 计算匹配度并排序
+      filtered = filtered.map(t => ({ ...t, matchScore: getMatchScore(t) })).sort((a,b) => b.matchScore - a.matchScore);
+
+      document.getElementById('tender-count').textContent = `共 ${filtered.length} 条招标信息`;
+      const container = document.getElementById('tender-list');
+      container.innerHTML = '';
+
+      filtered.forEach(t => {
+        const score = t.matchScore;
+        let badgeClass = 'badge-low';
+        if (score >= 80) badgeClass = 'badge-high';
+        else if (score >= 50) badgeClass = 'badge-med';
+
+        const card = document.createElement('div');
+        card.className = 'card bg-white p-4 rounded-lg shadow border-l-4 border-blue-500';
+        card.innerHTML = `
+          <div class="flex justify-between items-start">
+            <div class="flex-1">
+              <h3 class="font-bold text-lg text-gray-800 mb-2">${escapeHtml(t.title)}</h3>
+              <div class="flex flex-wrap gap-3 text-sm text-gray-600">
+                <span>📍 ${escapeHtml(t.region)}</span>
+                <span>💰 ${escapeHtml(t.budget)}</span>
+                <span>⏰ ${escapeHtml(t.deadline)}</span>
+                <span class="badge ${badgeClass}">匹配度 ${score}%</span>
+              </div>
+            </div>
+            <button class="text-blue-600 hover:underline text-sm ml-4" data-id="${t.id}">查看详情</button>
+          </div>
+        `;
+        card.querySelector('button').addEventListener('click', () => showDetail(t));
+        container.appendChild(card);
+      });
+    }
+
+    // === 详情页 ===
+    function showDetail(tender) {
+      document.getElementById('detail-title').textContent = tender.title;
+      document.getElementById('detail-id').textContent = tender.id;
+      document.getElementById('detail-region').textContent = tender.region;
+      document.getElementById('detail-budget').textContent = tender.budget;
+      document.getElementById('detail-deadline').textContent = tender.deadline;
+      document.getElementById('detail-publish').textContent = tender.publishDate;
+      document.getElementById('detail-description').textContent = tender.description;
+      document.getElementById('detail-contact').textContent = tender.contact;
+      document.getElementById('detail-link').href = tender.sourceUrl;
+
+      const reqContainer = document.getElementById('detail-requirements');
+      reqContainer.innerHTML = '';
+      if (tender.requirements && tender.requirements.length) {
+        tender.requirements.forEach(r => {
+          const badge = document.createElement('span');
+          badge.className = 'badge badge-med';
+          badge.textContent = r;
+          reqContainer.appendChild(badge);
+        });
+      } else {
+        reqContainer.innerHTML = '<span class="text-gray-500">无具体资质要求，详见原文</span>';
+      }
+
+      document.getElementById('modal-detail').classList.remove('hidden');
+    }
+
+    document.getElementById('modal-close').addEventListener('click', () => {
+      document.getElementById('modal-detail').classList.add('hidden');
+    });
+    document.getElementById('modal-detail').addEventListener('click', (e) => {
+      if (e.target.id === 'modal-detail') {
+        document.getElementById('modal-detail').classList.add('hidden');
+      }
+    });
+
+    // === 资质管理 ===
+    function renderQualifications() {
+      const list = document.getElementById('qual-list');
+      list.innerHTML = '';
+      myQualifications.forEach((q, idx) => {
+        const item = document.createElement('div');
+        item.className = 'flex justify-between items-center bg-gray-50 p-3 rounded';
+        item.innerHTML = `
+          <span>${escapeHtml(q)}</span>
+          <button data-idx="${idx}" class="text-red-500 hover:text-red-700">删除</button>
+        `;
+        item.querySelector('button').addEventListener('click', (e) => {
+          const idx = parseInt(e.target.dataset.idx);
+          myQualifications.splice(idx, 1);
+          localStorage.setItem('myQualifications', JSON.stringify(my Qualifications));
+          renderQualifications();
+        });
+        list.appendChild(item);
+      });
+    }
+
+    document.getElementById('qual-add').addEventListener('click', () => {
+      const input = document.getElementById('qual-input');
+      const val = input.value.trim();
+      if (val && !myQualifications.includes(val)) {
+        myQualifications.push(val);
+        localStorage.setItem('myQualifications', JSON.stringify(myQualifications));
+        input.value = '';
+        renderQualifications();
+      }
+    });
+
+    // === 数据更新 ===
+    async function updateData() {
+      const progress = document.getElementById('update-progress');
+      const status = document.getElementById('update-status');
+      progress.classList.remove('hidden');
+      status.textContent = '正在抓取最新招标信息...';
+
+      try {
+        // 触发 GitHub Actions workflow_dispatch
+        const resp = await fetch('/.github/workflows/update.yml/dispatch', {
+          method: 'POST',
+          headers: { 'Accept': 'application/vnd.github.v3+json' },
+          body: JSON.stringify({})
+        });
+
+        if (resp.ok) {
+          status.textContent = '✅ 更新任务已提交，请稍后刷新列表';
+          setTimeout(() => location.reload(), 3000);
+        } else {
+          throw new Error('Workflow trigger failed');
+        }
+      } catch (e) {
+        status.textContent = '❌ 更新失败：' + e.message;
+        setTimeout(() => progress.classList.add('hidden'), 3000);
+      }
+    }
+
+    // === 工具函数 ===
+    function escapeHtml(text) {
+      if (!text) return '';
+      return text.replace(/[&<>"']/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[m]));
+    }
+
+    // === 初始化 ===
+    (async function init() {
+      await loadTenders();
+      renderTenderList();
+      showPage('list');
+    })();
+  </script>
+</body>
+</html>
