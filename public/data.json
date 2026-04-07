@@ -1,83 +1,447 @@
-[
-  {
-    "id": "tender-001",
-    "title": "智慧城市物联网平台建设项目",
-    "region": "北京市",
-    "industry": "智慧城市",
-    "budget": 850,
-    "requiredQualifications": [
-      "电子与智能化工程专业承包二级",
-      "一级建造师（机电）",
-      "ISO9001质量管理体系认证"
-    ],
-    "minQualificationLevel": "二级",
-    "deadline": "2026-04-20",
-    "description": "建设城市级物联网平台，包括传感器部署、数据采集与分析、智能应用等。项目周期12个月。",
-    "sourceUrl": "https://www.ccgp.gov.cn"
-  },
-  {
-    "id": "tender-002",
-    "title": "省级 healthcare 数据中心升级改造",
-    "region": "上海市",
-    "industry": "医疗信息化",
-    "budget": 1200,
-    "requiredQualifications": [
-      "信息安全服务资质证书（三级）",
-      "PMP认证人员（不少于2人）",
-      "CMMI3及以上认证"
-    ],
-    "minQualificationLevel": "三级",
-    "deadline": "2026-04-25",
-    "description": "对省级医疗数据中心进行升级，包括安全加固、云平台扩容、灾备系统建设。",
-    "sourceUrl": "https://www.ccgp.gov.cn"
-  },
-  {
-    "id": "tender-003",
-    "title": "智能制造生产线自动化改造",
-    "region": "深圳市",
-    "industry": "工业互联网",
-    "budget": 650,
-    "requiredQualifications": [
-      "机电工程施工总承包三级",
-      "工业机器人系统集成经验",
-      "高级工程师职称"
-    ],
-    "minQualificationLevel": "三级",
-    "deadline": "2026-04-18",
-    "description": "为制造企业提供生产线自动化升级，包括机器人集成、MES系统部署、数字孪生平台。",
-    "sourceUrl": "https://www.ccgp.gov.cn"
-  },
-  {
-    "id": "tender-004",
-    "title": "智慧园区综合管理平台",
-    "region": "杭州市",
-    "industry": "智慧园区",
-    "budget": 420,
-    "requiredQualifications": [
-      "软件企业认定证书",
-      "CMMI3及以上认证",
-      "园区信息化项目经验"
-    ],
-    "minQualificationLevel": "无",
-    "deadline": "2026-04-22",
-    "description": "开发智慧园区综合管理平台，包括安防、能耗、停车、访客等模块。",
-    "sourceUrl": "https://www.ccgp.gov.cn"
-  },
-  {
-    "id": "tender-005",
-    "title": "政务云平台扩容及安全加固",
-    "region": "广州市",
-    "industry": "政务云",
-    "budget": 980,
-    "requiredQualifications": [
-      "网络安全等级保护测评机构推荐证书",
-      "可信云认证",
-      "注册信息安全专业人员（CISP）",
-      "等保三级及以上项目经验"
-    ],
-    "minQualificationLevel": "三级",
-    "deadline": "2026-04-30",
-    "description": "为省级政务云平台提供扩容和安全加固服务，满足等保2.0要求。",
-    "sourceUrl": "https://www.ccgp.gov.cn"
-  }
-]
+{
+  "generatedAt": "2026-04-07 22:21:37",
+  "total": 40,
+  "source": "国家电网ECP平台 (https://ecp.sgcc.com.cn)",
+  "data": [
+    {
+      "id": "562622",
+      "title": "【全球能源互联网集团有限公司】全球能源互联网集团有限公司2026年服务第二次（框架）公开招标采购",
+      "region": "全球能源互联网集团有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-07",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/562622"
+    },
+    {
+      "id": "562621",
+      "title": "【全球能源互联网集团有限公司】全球能源互联网集团有限公司2026年服务第二次（批次）公开招标采购",
+      "region": "全球能源互联网集团有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-07",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/562621"
+    },
+    {
+      "id": "SL2644",
+      "title": "【国网内蒙古东部电力有限公司】国家电网有限公司2026年东北区域第一次联合采购10kV电力电缆、10kV柱上变压器台成套设备、10kV变压器框架协议（协议库存）公开招标采购变更公告1",
+      "region": "国网内蒙古东部电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-05",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/SL2644"
+    },
+    {
+      "id": "1826AA",
+      "title": "【国网江西省电力有限公司】国网江西电力2026年第一次配网（省网）协议库存物资类公开招标采购",
+      "region": "国网江西省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/1826AA"
+    },
+    {
+      "id": "132602",
+      "title": "【国网福建省电力有限公司】国网福建电力2026年第二次物资公开招标采购变更公告1",
+      "region": "国网福建省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/132602"
+    },
+    {
+      "id": "F-2026-SNGW-Z02",
+      "title": "【国网陕西省电力有限公司】国网陕西省电力有限公司2026年第二次工程、服务集中招标采购项目变更公告1",
+      "region": "国网陕西省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/F-2026-SNGW-Z02"
+    },
+    {
+      "id": "092609",
+      "title": "【国网上海市电力公司】国网上海市电力公司2026年服务第三次公开招标采购",
+      "region": "国网上海市电力公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/092609"
+    },
+    {
+      "id": "372606",
+      "title": "【国家电网公司华东分部（华东电网有限公司）】国网华东分部2026年服务第二次框架协议公开招标采购",
+      "region": "国家电网公司华东分部（华东电网有限公司）",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/372606"
+    },
+    {
+      "id": "372605",
+      "title": "【国家电网公司华东分部（华东电网有限公司）】国网华东分部2026年物资第二次公开招标采购",
+      "region": "国家电网公司华东分部（华东电网有限公司）",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/372605"
+    },
+    {
+      "id": "372604",
+      "title": "【国家电网公司华东分部（华东电网有限公司）】国网华东分部2026年服务第二次公开招标采购",
+      "region": "国家电网公司华东分部（华东电网有限公司）",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/372604"
+    },
+    {
+      "id": "152647",
+      "title": "【国网湖北省电力有限公司】国网湖北省电力有限公司2026年服务类第二次框架协议公开招标采购",
+      "region": "国网湖北省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/152647"
+    },
+    {
+      "id": "1526Q2",
+      "title": "【国网湖北省电力有限公司】国网湖北省电力有限公司2026年迁改项目第一次工程及服务框架协议公开招标采购",
+      "region": "国网湖北省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/1526Q2"
+    },
+    {
+      "id": "312603",
+      "title": "【西藏电力有限公司】国网西藏电力有限公司2026年第二次服务公开招标采购项目变更公告5",
+      "region": "西藏电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/312603"
+    },
+    {
+      "id": "122603",
+      "title": "【国网安徽省电力有限公司】国网安徽电力2026年第三次服务公开招标采购",
+      "region": "国网安徽省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/122603"
+    },
+    {
+      "id": "092617",
+      "title": "【国网上海市电力公司】国网上海电力公司2026年内蒙古库布齐沙漠基地送电上海受端配套过江工程（上海段）服务公开招标采购变更公告2",
+      "region": "国网上海市电力公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/092617"
+    },
+    {
+      "id": "CY1226J016",
+      "title": "【国网安徽省电力有限公司】国网安徽电力2026年原集体企业第一次服务公开招标采购",
+      "region": "国网安徽省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/CY1226J016"
+    },
+    {
+      "id": "2026F2",
+      "title": "【国网重庆市电力公司】国网重庆市电力公司2026年第二次服务公开招标采购变更公告1",
+      "region": "国网重庆市电力公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/2026F2"
+    },
+    {
+      "id": "122608",
+      "title": "【国网安徽省电力有限公司】国网安徽电力2026年第一次物资公开招标采购",
+      "region": "国网安徽省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/122608"
+    },
+    {
+      "id": "W-2026-SNGW-Z01X",
+      "title": "【国网陕西省电力有限公司】国网陕西省电力有限公司2026年新增第一次物资集中招标采购项目变更公告3",
+      "region": "国网陕西省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/W-2026-SNGW-Z01X"
+    },
+    {
+      "id": "932617",
+      "title": "【国网电力工程研究院有限公司】国网电力工程研究院有限公司2026年第三次物资公开招标采购",
+      "region": "国网电力工程研究院有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-02",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/932617"
+    },
+    {
+      "id": "0711-26OTL02012010",
+      "title": "【国家电网有限公司】国家电网有限公司2026年数字化项目新增第一次设备公开招标采购变更公告2",
+      "region": "国家电网有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-01",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/0711-26OTL02012010"
+    },
+    {
+      "id": "GWFW-NX-292612",
+      "title": "【国网宁夏电力有限公司】国网宁夏电力有限公司2026年电网建设工程服务第三次公开招标采购",
+      "region": "国网宁夏电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-01",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/GWFW-NX-292612"
+    },
+    {
+      "id": "322612",
+      "title": "【国家电网有限公司直流技术中心】国家电网有限公司直流技术中心2026年服务第二次公开招标采购变更公告1",
+      "region": "国家电网有限公司直流技术中心",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-01",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/322612"
+    },
+    {
+      "id": "322611",
+      "title": "【国家电网有限公司直流技术中心】国家电网有限公司直流技术中心2026年物资第二次公开招标采购变更公告1",
+      "region": "国家电网有限公司直流技术中心",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-01",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/322611"
+    },
+    {
+      "id": "7326A2",
+      "title": "【国家电网公司华北分部（华北电网有限公司）】国网华北分部2026年服务第一次公开招标采购",
+      "region": "国家电网公司华北分部（华北电网有限公司）",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-01",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/7326A2"
+    },
+    {
+      "id": "7326A1",
+      "title": "【国家电网公司华北分部（华北电网有限公司）】国网华北分部2026年物资第一次公开招标采购",
+      "region": "国家电网公司华北分部（华北电网有限公司）",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-01",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/7326A1"
+    },
+    {
+      "id": "7326A3",
+      "title": "【国家电网公司华北分部（华北电网有限公司）】国网华北分部2026年服务第一次框架协议公开招标采购",
+      "region": "国家电网公司华北分部（华北电网有限公司）",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-01",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/7326A3"
+    },
+    {
+      "id": "862651",
+      "title": "【国家电网有限公司西南分部】国网西南分部2026年服务类第一次邀请招标采购",
+      "region": "国家电网有限公司西南分部",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-01",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/862651"
+    },
+    {
+      "id": "2726AA",
+      "title": "【国网甘肃省电力公司】国网甘肃电力2026年物资第一次协议库存公开招标采购",
+      "region": "国网甘肃省电力公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-03-31",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/2726AA"
+    },
+    {
+      "id": "502617",
+      "title": "【国家电网有限公司高级培训中心】国家电网有限公司高级培训中心2026年服务第一次框架协议公开招标采购",
+      "region": "国家电网有限公司高级培训中心",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-03-31",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/502617"
+    },
+    {
+      "id": "502614",
+      "title": "【国家电网有限公司高级培训中心】国家电网有限公司高级培训中心2026年物资第一次公开招标采购",
+      "region": "国家电网有限公司高级培训中心",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-03-31",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/502614"
+    },
+    {
+      "id": "502613",
+      "title": "【国家电网有限公司高级培训中心】国家电网有限公司高级培训中心2026年服务第一次公开招标采购",
+      "region": "国家电网有限公司高级培训中心",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-03-31",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/502613"
+    },
+    {
+      "id": "2726D4",
+      "title": "【国网甘肃省电力公司】国网甘肃电力2026年物资第一次框架协议（统一匹配）公开招标采购",
+      "region": "国网甘肃省电力公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-03-31",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/2726D4"
+    },
+    {
+      "id": "2726D3",
+      "title": "【国网甘肃省电力公司】国网甘肃电力2026年新增非电网零星物资及办公用品框架协议（电商交易）公开招标采购",
+      "region": "国网甘肃省电力公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-03-31",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/2726D3"
+    },
+    {
+      "id": "2301BS0011C01",
+      "title": "【国网上海市电力公司】国网上海市电力公司月晖110千伏输变电工程（土建、变电）施工-招标公告",
+      "region": "国网上海市电力公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-06",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/2301BS0011C01"
+    },
+    {
+      "id": "2301BS0011F01",
+      "title": "【国网上海市电力公司】国网上海市电力公司月晖110千伏输变电工程（土建、变电）监理-招标公告",
+      "region": "国网上海市电力公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-06",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/2301BS0011F01"
+    },
+    {
+      "id": "A1504012026021301001",
+      "title": "【国网内蒙古东部电力有限公司赤峰供电公司】国网蒙东赤峰供电公司林西变电工区运维检修用房项目（二次）招标公告",
+      "region": "国网内蒙古东部电力有限公司赤峰供电公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/A1504012026021301001"
+    },
+    {
+      "id": "ZYZB-2026-W-0086",
+      "title": "【国网河北省电力有限公司】国网河北电力供电服务计量用房项目 瓷砖采购（暂估价部分）",
+      "region": "国网河北省电力有限公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/ZYZB-2026-W-0086"
+    },
+    {
+      "id": "2502JS0196U01",
+      "title": "【国网上海市电力公司】国网上海市电力公司上海金山隆安110千伏输变电工程勘察设计合并招标-招标公告",
+      "region": "国网上海市电力公司",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/2502JS0196U01"
+    },
+    {
+      "id": "S110000A001043197001",
+      "title": "【国家电网公司华北分部（华北电网有限公司）】华北电网有限公司枣林前街32号院综合楼改建工程（方案设计、初步设计、施工图设计、建筑师负责制）招标公告",
+      "region": "国家电网公司华北分部（华北电网有限公司）",
+      "industry": "电力",
+      "budget": 0,
+      "requiredQualifications": [],
+      "deadline": "2026-04-03",
+      "description": "",
+      "sourceUrl": "https://ecp.sgcc.com.cn/ecp2.0/portal/#/notice/S110000A001043197001"
+    }
+  ]
+}
